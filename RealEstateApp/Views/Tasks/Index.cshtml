@@ -1,0 +1,98 @@
+﻿@model IEnumerable<RealEstateApp.Models.Tasks>
+
+@{
+    ViewData["Title"] = "Real Estate App - Tasks";
+}
+
+<h1>Tasks</h1>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+<div>
+    <div style="float:left">
+        <button class="btn btn-primary" onclick="AddTask()">Add Task</button>
+    </div>
+    <div style="float:right; width:40%;">
+        <form asp-controller="Task" asp-action="Index" class="form-group">
+            <table style="width:100%">
+                <tr>
+                    <th><input class="form-control" type="text" name="SearchString" placeholder="Search"></th>
+                    <th><button type="submit" class="btn btn-default btn-info">Filter</button></th>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<br />
+<br />
+<table class="table" style="font-size: 12px;">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.TasksId)</th>
+            <th>@Html.DisplayNameFor(model => model.TaskName)</th>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th>@Html.DisplayNameFor(model => model.FkUsersId)</th>
+            <th>@Html.DisplayNameFor(model => model.TaskDate)</th>
+            <th>@Html.DisplayNameFor(model => model.TaskReminderDate)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.TasksId)</td>
+            <td>@Html.DisplayFor(modelItem => item.TaskName)</td>
+            <td>@Html.DisplayFor(modelItem => item.Description)</td>
+            <td>@Html.DisplayFor(modelItem => item.FkUsersId)</td>
+            <td>@Html.DisplayFor(modelItem => item.TaskDate)</td>
+            <td>@Html.DisplayFor(modelItem => item.TaskReminderDate)</td>            
+            <td>
+                <button class="btn btn-default" onclick="EditTask(@item.TasksId)">Edit</button>
+                <button class="btn btn-danger" onclick="DeleteTask(@item.TasksId)">Delete</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+<div class="modal fade" id="taskFormModel" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="float:left" id="title" class="modal-title">Real Estate App</h3>
+                <a style="float:right" href="#" class="btn btn-danger" data-dismiss="modal">&times;</a>
+            </div>
+            <div class="modal-body" id="taskFormModelDiv">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var AddTask = function () {
+        var url = "/Tasks/Create";
+
+        $("#taskFormModelDiv").load(url, function () {
+            $("#taskFormModel").modal("show");
+        });
+    }
+
+    var EditTask = function (itemId) {
+        var url = "/Tasks/Edit/"+itemId;
+
+        $("#taskFormModelDiv").load(url, function () {
+            $("#taskFormModel").modal("show");
+        });        
+    }
+
+    var DeleteTask = function (itemId) {
+        var url = "/Tasks/Delete/"+itemId;
+
+        $("#taskFormModelDiv").load(url, function () {
+            $("#taskFormModel").modal("show");
+        });        
+    }
+</script>
+

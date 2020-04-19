@@ -1,0 +1,56 @@
+﻿@model RealEstateApp.Models.Routes
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Routes</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RouteName" class="control-label"></label>
+                <input asp-for="RouteName" class="form-ctrl" />
+                <span asp-validation-for="RouteName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RouteDate" class="control-label"></label>
+                <input asp-for="RouteDate" class="form-ctrl" />
+                <span asp-validation-for="RouteDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkContactsId" class="control-label"></label>
+                <select asp-for="FkContactsId" class ="form-ctrl" asp-items="ViewBag.FkContactsId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkUsersId" class="control-label"></label>
+                <select asp-for="FkUsersId" class ="form-ctrl" asp-items="ViewBag.FkUsersId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .form-ctrl {
+        display: block;
+        width: 450px;
+        height: calc(1.5em + 0.75rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+</style>

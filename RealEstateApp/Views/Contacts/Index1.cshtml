@@ -1,0 +1,77 @@
+﻿@model IEnumerable<RealEstateApp.Models.Contacts>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNames)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactLastNames)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlternateNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkCompanies)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactNames)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactLastNames)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlternateNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkCompanies.CompanyName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ContactsId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ContactsId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ContactsId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

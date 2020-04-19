@@ -1,0 +1,209 @@
+﻿@model IEnumerable<RealEstateApp.Models.Listings>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ListingNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SmlsNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TuNuevoEspacioNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsSmlsPromoted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsTuNuevoEspacioPromoted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListingType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BloqueNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UrbanizationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Neighborhood)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estrato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalesPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdministrationFee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParkingSpaces)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasOpenKitchen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasElevator)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsClosedUrbanization)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasBalcony)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasMaidRoom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsStudio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasPool)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearBuilt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AreaSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfRooms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfBathrooms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkCompanies)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkContacts)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ListingNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SmlsNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TuNuevoEspacioNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsSmlsPromoted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsTuNuevoEspacioPromoted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ListingType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BloqueNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UrbanizationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Neighborhood)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estrato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalesPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdministrationFee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkingSpaces)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HasOpenKitchen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HasElevator)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsClosedUrbanization)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HasBalcony)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HasMaidRoom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsStudio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HasPool)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearBuilt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AreaSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfRooms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfBathrooms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkCompanies.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkContacts.ContactLastNames)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ListingsId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ListingsId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ListingsId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

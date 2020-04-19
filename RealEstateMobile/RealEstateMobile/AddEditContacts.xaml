@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RealEstateMobile.AddEditContacts"
+             Title = "Add/Edit Contacts">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="lblID" Grid.Column="0" Grid.Row="0" IsVisible="False">ID:</Label>
+            <Label Grid.Column="0" Grid.Row="1">Name:</Label>
+            <Label Grid.Column="0" Grid.Row="2">Lastname:</Label>
+            <Label Grid.Column="0" Grid.Row="3">Id Number:</Label>
+            <Label Grid.Column="0" Grid.Row="4">Telephone:</Label>
+            <Label Grid.Column="0" Grid.Row="5">Alternate Phone:</Label>
+            <Label Grid.Column="0" Grid.Row="6">Email:</Label>
+            <Label Grid.Column="0" Grid.Row="7">Contact Type:</Label>
+            <Label Grid.Column="0" Grid.Row="8">Company:</Label>
+
+            <Entry x:Name="txtContactId" Grid.Column="1" Grid.Row="0" Text="{Binding contactsId}" Keyboard="Text" IsVisible="False"></Entry>
+            <Entry x:Name="txtContactNames" Grid.Column="1" Grid.Row="1" Text="{Binding contactNames}" Keyboard="Text"></Entry>
+            <Entry x:Name="txtContactLastNames" Grid.Column="1" Grid.Row="2" Text="{Binding contactLastNames}" Keyboard="Text"></Entry>
+            <Entry x:Name="txtIdNumber" Grid.Column="1" Grid.Row="3" Text="{Binding idNumber}" Keyboard="Text"></Entry>
+            <Entry x:Name="txtPhoneNumber" Grid.Column="1" Grid.Row="4" Text="{Binding phoneNumber}" Keyboard="Text"></Entry>
+            <Entry x:Name="txtAlternateNumber" Grid.Column="1" Grid.Row="5" Text="{Binding alternateNumber}" Keyboard="Text"></Entry>
+            <Entry x:Name="txtEmailAddress" Grid.Column="1" Grid.Row="6" Text="{Binding emailAddress}" Keyboard="Text"></Entry>
+            <Entry x:Name="txtContactType" Grid.Column="1" Grid.Row="7" Text="{Binding contactType}" Keyboard="Text"></Entry>
+            <Entry x:Name="txtFKCompaniesId" Grid.Column="1" Grid.Row="8" Text="{Binding fkCompaniesId}" Keyboard="Text"></Entry>
+
+            <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="9">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnSave" Grid.Row="0" Grid.Column="0" Text="SAVE" Clicked="BtnSave_Clicked" />
+                <Button x:Name="btnDelete" Grid.Row="0" Grid.Column="1" Text="DELETE" Clicked="BtnDelete_Clicked" />
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

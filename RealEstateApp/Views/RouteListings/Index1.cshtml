@@ -1,0 +1,47 @@
+﻿@model IEnumerable<RealEstateApp.Models.RouteListings>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduledTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkListings)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkRoutes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScheduledTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkListings.ListingNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkRoutes.RouteName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RouteListingsId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RouteListingsId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RouteListingsId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

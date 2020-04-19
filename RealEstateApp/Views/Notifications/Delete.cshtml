@@ -1,0 +1,38 @@
+﻿@model RealEstateApp.Models.Notifications
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Notifications</h4>
+    <hr />
+    <dl>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Notification)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Notification)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NotificationDatetime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NotificationDatetime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FkUsers)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FkUsers.LastNames)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="NotificationsId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+    </form>
+</div>

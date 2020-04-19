@@ -1,0 +1,35 @@
+﻿@model RealEstateApp.Models.RouteListings
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>RouteListings</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ScheduledTime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ScheduledTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FkListings)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FkListings.ListingNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FkRoutes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FkRoutes.RouteName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.RouteListingsId">Edit</a> |
+</div>

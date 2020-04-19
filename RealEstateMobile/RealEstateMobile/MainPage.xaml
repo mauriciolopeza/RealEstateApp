@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:RealEstateMobile"
+             x:Class="RealEstateMobile.MainPage"
+             Title = "Real Estate App"
+             BackgroundColor="#000">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="darkLabel" TargetType="Label">
+                <Setter Property="BackgroundColor" Value="#000"/>
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="30" />
+            </Style>
+            <Style x:Key="darkButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#222"/>
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BorderRadius" Value="0"/>
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="ContentLayout" Value="Top, 10" />
+            </Style>
+            <Style x:Key="darkFooterLabel" TargetType="Label">
+                <Setter Property="BackgroundColor" Value="#000"/>
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="10" />
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Button x:Name="btnProperty" Text="Property" Grid.Row="0" Grid.Column="0"
+        Style="{StaticResource darkButton}">
+                <Button.Image>
+                    <OnPlatform x:TypeArguments="FileImageSource">
+                        <On Platform="Android" Value="Resources/drawable/House.png" />
+                        <On Platform="iOS" Value="Resources/House.png" />
+                        <On Platform="UWP" Value="Assets/House.png" />
+                    </OnPlatform>
+                </Button.Image>
+            </Button>
+            <Button x:Name="btnContacts" Text="Contacts" Grid.Row="0" Grid.Column="1"
+        Style="{StaticResource darkButton}" Clicked="BtnContacts_Clicked">
+                <Button.Image>
+                    <OnPlatform x:TypeArguments="FileImageSource">
+                        <On Platform="Android" Value="Resources/drawable/Tenant.png" />
+                        <On Platform="iOS" Value="Resources/Tenant.png" />
+                        <On Platform="UWP" Value="Assets/Tenant.png" />
+                    </OnPlatform>
+                </Button.Image>
+            </Button>
+            <Button x:Name="btnPets" Text="Pets" Grid.Row="1" Grid.Column="0"
+        Style="{StaticResource darkButton}">
+                <Button.Image>
+                    <OnPlatform x:TypeArguments="FileImageSource">
+                        <On Platform="Android" Value="Resources/drawable/Pet.png" />
+                        <On Platform="iOS" Value="Resources/Pet.png" />
+                        <On Platform="UWP" Value="Assets/Pet.png" />
+                    </OnPlatform>
+                </Button.Image>
+            </Button>
+            <Button x:Name="btnInvoices" Text="Invoices" Grid.Row="1" Grid.Column="1"
+        Style="{StaticResource darkButton}">
+                <Button.Image>
+                    <OnPlatform x:TypeArguments="FileImageSource">
+                        <On Platform="Android" Value="Resources/drawable/Invoice.png" />
+                        <On Platform="iOS" Value="Resources/Invoice.png" />
+                        <On Platform="UWP" Value="Assets/Invoice.png" />
+                    </OnPlatform>
+                </Button.Image>
+            </Button>
+            <Button x:Name="btnHelp" Text="Help" Grid.Row="2" Grid.Column="0"
+        Style="{StaticResource darkButton}">
+                <Button.Image>
+                    <OnPlatform x:TypeArguments="FileImageSource">
+                        <On Platform="Android" Value="Resources/drawable/Help.png" />
+                        <On Platform="iOS" Value="Resources/Help.png" />
+                        <On Platform="UWP" Value="Assets/Help.png" />
+                    </OnPlatform>
+                </Button.Image>
+            </Button>
+            <Button x:Name="btnNotifications" Text="Notifications" Grid.Row="2" Grid.Column="1"
+        Style="{StaticResource darkButton}">
+                <Button.Image>
+                    <OnPlatform x:TypeArguments="FileImageSource">
+                        <On Platform="Android" Value="Resources/drawable/Notification.png" />
+                        <On Platform="iOS" Value="Resources/Notification.png" />
+                        <On Platform="UWP" Value="Assets/Notification.png" />
+                    </OnPlatform>
+                </Button.Image>
+            </Button>
+            <Button x:Name="btnCalendar" Text="Calendar" Grid.Row="3" Grid.Column="0"
+        Style="{StaticResource darkButton}">
+                <Button.Image>
+                    <OnPlatform x:TypeArguments="FileImageSource">
+                        <On Platform="Android" Value="Resources/drawable/Calendar.png" />
+                        <On Platform="iOS" Value="Resources/Calendar.png" />
+                        <On Platform="UWP" Value="Assets/Calendar.png" />
+                    </OnPlatform>
+                </Button.Image>
+            </Button>
+            <Button x:Name="btnListings" Text="Listings" Grid.Row="3" Grid.Column="1"
+        Style="{StaticResource darkButton}" Clicked="BtnListings_Clicked">
+                <Button.Image>
+                    <OnPlatform x:TypeArguments="FileImageSource">
+                        <On Platform="Android" Value="Resources/drawable/House.png" />
+                        <On Platform="iOS" Value="Resources/House.png" />
+                        <On Platform="UWP" Value="Assets/House.png" />
+                    </OnPlatform>
+                </Button.Image>
+            </Button>
+            <Label Text = "Powered by EECN Solutions" Grid.ColumnSpan="2"
+        Grid.Row="4" Grid.Column="0" Style="{StaticResource darkFooterLabel}" />
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

@@ -1,0 +1,102 @@
+﻿@model IEnumerable<RealEstateApp.Models.Companies>
+
+@{
+    ViewData["Title"] = "Real Estate App - Companies";
+}
+
+<h1>Companies</h1>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+<div>
+    <div style="float:left">
+        <button class="btn btn-primary" onclick="AddCompany()">Add Company</button>
+    </div>
+    <div style="float:right; width:40%;">
+        <form asp-controller="Company" asp-action="Index" class="form-group">
+            <table style="width:100%">
+                <tr>
+                    <th><input class="form-control" type="text" name="SearchString" placeholder="Search"></th>
+                    <th><button type="submit" class="btn btn-default btn-info">Filter</button></th>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<br />
+<br />
+<table class="table" style="font-size: 12px;">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.CompaniesId)</th>
+            <th>@Html.DisplayNameFor(model => model.CompanyName)</th>
+            <th>@Html.DisplayNameFor(model => model.LogoUrl)</th>
+            <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+            <th>@Html.DisplayNameFor(model => model.AlternateNumber)</th>
+            <th>@Html.DisplayNameFor(model => model.Address)</th>
+            <th>@Html.DisplayNameFor(model => model.City)</th>
+            <th>@Html.DisplayNameFor(model => model.Department)</th>            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.CompaniesId)</td>
+            <td>@Html.DisplayFor(modelItem => item.CompanyName)</td>
+            <td>@Html.DisplayFor(modelItem => item.LogoUrl)</td>
+            <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+            <td>@Html.DisplayFor(modelItem => item.AlternateNumber)</td>
+            <td>@Html.DisplayFor(modelItem => item.Address)</td>
+            <td>@Html.DisplayFor(modelItem => item.City)</td>
+            <td>@Html.DisplayFor(modelItem => item.Department)</td>            
+            <td>
+                <button class="btn btn-default" onclick="EditCompany(@item.CompaniesId)">Edit</button>
+                <button class="btn btn-danger" onclick="DeleteCompany(@item.CompaniesId)">Delete</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+<div class="modal fade" id="companyFormModel" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="float:left" id="title" class="modal-title">Real Estate App</h3>
+                <a style="float:right" href="#" class="btn btn-danger" data-dismiss="modal">&times;</a>
+            </div>
+            <div class="modal-body" id="companyFormModelDiv">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var AddCompany = function () {
+        var url = "/Companies/Create";
+
+        $("#companyFormModelDiv").load(url, function () {
+            $("#companyFormModel").modal("show");
+        });
+    }
+
+    var EditCompany = function (itemId) {
+        var url = "/Companies/Edit/"+itemId;
+
+        $("#companyFormModelDiv").load(url, function () {
+            $("#companyFormModel").modal("show");
+        });        
+    }
+
+    var DeleteCompany = function (itemId) {
+        var url = "/Companies/Delete/"+itemId;
+
+        $("#companyFormModelDiv").load(url, function () {
+            $("#companyFormModel").modal("show");
+        });        
+    }
+</script>
+

@@ -1,0 +1,104 @@
+﻿@model IEnumerable<RealEstateApp.Models.Contacts>
+
+@{
+    ViewData["Title"] = "Real Estate App - Contacts";
+}
+
+<h1>Contacts</h1>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+<div>
+    <div style="float:left">
+        <button class="btn btn-primary" onclick="AddContact()">Add Contact</button>
+    </div>
+    <div style="float:right; width:40%;">
+        <form asp-controller="Contact" asp-action="Index" class="form-group">
+            <table style="width:100%">
+                <tr>
+                    <th><input class="form-control" type="text" name="SearchString" placeholder="Search"></th>
+                    <th><button type="submit" class="btn btn-default btn-info">Filter</button></th>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<br />
+<br />
+<table class="table" style="font-size: 12px;">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ContactsId)</th>
+            <th>@Html.DisplayNameFor(model => model.ContactNames)</th>
+            <th>@Html.DisplayNameFor(model => model.ContactLastNames)</th>
+            <th>@Html.DisplayNameFor(model => model.IdNumber)</th>
+            <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+            <th>@Html.DisplayNameFor(model => model.AlternateNumber)</th>
+            <th>@Html.DisplayNameFor(model => model.EmailAddress)</th>
+            <th>@Html.DisplayNameFor(model => model.ContactType)</th>
+            <th>@Html.DisplayNameFor(model => model.FkCompaniesId)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.ContactsId)</td>
+            <td>@Html.DisplayFor(modelItem => item.ContactNames)</td>
+            <td>@Html.DisplayFor(modelItem => item.ContactLastNames)</td>
+            <td>@Html.DisplayFor(modelItem => item.IdNumber)</td>
+            <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+            <td>@Html.DisplayFor(modelItem => item.AlternateNumber)</td>
+            <td>@Html.DisplayFor(modelItem => item.EmailAddress)</td>
+            <td>@Html.DisplayFor(modelItem => item.ContactType)</td>
+            <td>@Html.DisplayFor(modelItem => item.FkCompaniesId)</td>
+            <td>
+                <button class="btn btn-default" onclick="EditContact(@item.ContactsId)">Edit</button>
+                <button class="btn btn-danger" onclick="DeleteContact(@item.ContactsId)">Delete</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+<div class="modal fade" id="contactFormModel" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="float:left" id="title" class="modal-title">Real Estate App</h3>
+                <a style="float:right" href="#" class="btn btn-danger" data-dismiss="modal">&times;</a>
+            </div>
+            <div class="modal-body" id="contactFormModelDiv">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var AddContact = function () {
+        var url = "/Contacts/Create";
+
+        $("#contactFormModelDiv").load(url, function () {
+            $("#contactFormModel").modal("show");
+        });
+    }
+
+    var EditContact = function (itemId) {
+        var url = "/Contacts/Edit/"+itemId;
+
+        $("#contactFormModelDiv").load(url, function () {
+            $("#contactFormModel").modal("show");
+        });        
+    }
+
+    var DeleteContact = function (itemId) {
+        var url = "/Contacts/Delete/"+itemId;
+
+        $("#contactFormModelDiv").load(url, function () {
+            $("#contactFormModel").modal("show");
+        });        
+    }
+</script>
+

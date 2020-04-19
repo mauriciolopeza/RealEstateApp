@@ -1,0 +1,38 @@
+﻿@model RealEstateApp.Models.RouteListings
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>RouteListings</h4>
+    <hr />
+    <dl>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ScheduledTime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ScheduledTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FkListings)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FkListings.ListingNumber)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FkRoutes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FkRoutes.RouteName)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="RouteListingsId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+    </form>
+</div>

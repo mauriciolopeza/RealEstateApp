@@ -1,0 +1,104 @@
+﻿@model IEnumerable<RealEstateApp.Models.Users>
+
+@{
+    ViewData["Title"] = "Real Estate App - Users";
+}
+
+<h1>Users</h1>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+<div>
+    <div style="float:left">
+        <button class="btn btn-primary" onclick="AddUser()">Add User</button>
+    </div>
+    <div style="float:right; width:40%;">
+        <form asp-controller="User" asp-action="Index" class="form-group">
+            <table style="width:100%">
+                <tr>
+                    <th><input class="form-control" type="text" name="SearchString" placeholder="Search"></th>
+                    <th><button type="submit" class="btn btn-default btn-info">Filter</button></th>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<br />
+<br />
+<table class="table" style="font-size: 12px;">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.UsersId)</th>
+            <th>@Html.DisplayNameFor(model => model.UserName)</th>
+            <th>@Html.DisplayNameFor(model => model.Password)</th>
+            <th>@Html.DisplayNameFor(model => model.Names)</th>
+            <th>@Html.DisplayNameFor(model => model.LastNames)</th>
+            <th>@Html.DisplayNameFor(model => model.EmailAddress)</th>
+            <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+            <th>@Html.DisplayNameFor(model => model.AlternateNumber)</th>
+            <th>@Html.DisplayNameFor(model => model.FkCompaniesId)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.UsersId)</td>
+            <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+            <td>@Html.DisplayFor(modelItem => item.Password)</td>
+            <td>@Html.DisplayFor(modelItem => item.Names)</td>
+            <td>@Html.DisplayFor(modelItem => item.LastNames)</td>
+            <td>@Html.DisplayFor(modelItem => item.EmailAddress)</td>
+            <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+            <td>@Html.DisplayFor(modelItem => item.AlternateNumber)</td>
+            <td>@Html.DisplayFor(modelItem => item.FkCompaniesId)</td>
+            <td>
+                <button class="btn btn-default" onclick="EditUser(@item.UsersId)">Edit</button>
+                <button class="btn btn-danger" onclick="DeleteUser(@item.UsersId)">Delete</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+<div class="modal fade" id="userFormModel" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="float:left" id="title" class="modal-title">Real Estate App</h3>
+                <a style="float:right" href="#" class="btn btn-danger" data-dismiss="modal">&times;</a>
+            </div>
+            <div class="modal-body" id="userFormModelDiv">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var AddUser = function () {
+        var url = "/Users/Create";
+
+        $("#userFormModelDiv").load(url, function () {
+            $("#userFormModel").modal("show");
+        });
+    }
+
+    var EditUser = function (itemId) {
+        var url = "/Users/Edit/"+itemId;
+
+        $("#userFormModelDiv").load(url, function () {
+            $("#userFormModel").modal("show");
+        });        
+    }
+
+    var DeleteUser = function (itemId) {
+        var url = "/Users/Delete/"+itemId;
+
+        $("#userFormModelDiv").load(url, function () {
+            $("#userFormModel").modal("show");
+        });        
+    }
+</script>
+

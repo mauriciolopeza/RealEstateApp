@@ -1,0 +1,96 @@
+﻿@model IEnumerable<RealEstateApp.Models.Routes>
+
+@{
+    ViewData["Title"] = "Real Estate App - Routes";
+}
+
+<h1>Routes</h1>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+<div>
+    <div style="float:left">
+        <button class="btn btn-primary" onclick="AddRoute()">Add Route</button>
+    </div>
+    <div style="float:right; width:40%;">
+        <form asp-controller="Route" asp-action="Index" class="form-group">
+            <table style="width:100%">
+                <tr>
+                    <th><input class="form-control" type="text" name="SearchString" placeholder="Search"></th>
+                    <th><button type="submit" class="btn btn-default btn-info">Filter</button></th>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<br />
+<br />
+<table class="table" style="font-size: 12px;">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.RoutesId)</th>
+            <th>@Html.DisplayNameFor(model => model.RouteName)</th>
+            <th>@Html.DisplayNameFor(model => model.RouteDate)</th>
+            <th>@Html.DisplayNameFor(model => model.FkContactsId)</th>
+            <th>@Html.DisplayNameFor(model => model.FkUsersId)</th>            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.RoutesId)</td>
+            <td>@Html.DisplayFor(modelItem => item.RouteName)</td>
+            <td>@Html.DisplayFor(modelItem => item.RouteDate)</td>
+            <td>@Html.DisplayFor(modelItem => item.FkContactsId)</td>
+            <td>@Html.DisplayFor(modelItem => item.FkUsersId)</td>
+            <td>
+                <button class="btn btn-default" onclick="EditRoute(@item.RoutesId)">Edit</button>
+                <button class="btn btn-danger" onclick="DeleteRoute(@item.RoutesId)">Delete</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+<div class="modal fade" id="routeFormModel" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="float:left" id="title" class="modal-title">Real Estate App</h3>
+                <a style="float:right" href="#" class="btn btn-danger" data-dismiss="modal">&times;</a>
+            </div>
+            <div class="modal-body" id="routeFormModelDiv">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var AddRoute = function () {
+        var url = "/Routes/Create";
+
+        $("#routeFormModelDiv").load(url, function () {
+            $("#routeFormModel").modal("show");
+        });
+    }
+
+    var EditRoute = function (itemId) {
+        var url = "/Routes/Edit/"+itemId;
+
+        $("#routeFormModelDiv").load(url, function () {
+            $("#routeFormModel").modal("show");
+        });        
+    }
+
+    var DeleteRoute = function (itemId) {
+        var url = "/Routes/Delete/"+itemId;
+
+        $("#routeFormModelDiv").load(url, function () {
+            $("#routeFormModel").modal("show");
+        });        
+    }
+</script>
+
